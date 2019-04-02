@@ -59,6 +59,7 @@
             this.btn_sql.Text = "SQL Server";
             this.btn_sql.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_sql.UseVisualStyleBackColor = true;
+            this.btn_sql.Click += new System.EventHandler(this.btn_sql_Click);
             // 
             // btn_access
             // 
@@ -84,6 +85,7 @@
             this.Controls.Add(this.btn_access);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Demonstração de acesso ao ACCESS e SQL Server";
             this.ResumeLayout(false);
 
