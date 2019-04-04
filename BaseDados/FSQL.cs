@@ -26,6 +26,7 @@ namespace BaseDados
             DialogResult dialogResult = MessageBox.Show("Sair", "Deseja sair?", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
+                Con.Close();
                 this.Close();
             }
 
@@ -70,7 +71,12 @@ namespace BaseDados
 
         private void LimpaGB1()
         {
-
+            tCliente.Text = "";
+            tNome.Text = "";
+            tMorada.Text = "";
+            cLocalidade.Text = "";
+            rMasculino.Checked = false;
+            rFeminino.Checked = false;
         }
 
         private void cCliente_KeyPress(object sender, KeyPressEventArgs e)
@@ -88,6 +94,12 @@ namespace BaseDados
             tNome.Text = dtCliReg.Rows[0]["nome"].ToString();
             tMorada.Text = dtCliReg.Rows[0]["morada"].ToString();
             dNascimento.Text = dtCliReg.Rows[0]["Data_nascimento"].ToString();
+            
+            if (dtCliReg.Rows[0]["sexo"].ToString() == "True")
+                rMasculino.Select();
+            else
+                rFeminino.Select();
+
             cLocalidade.SelectedValue = Convert.ToInt16(dtCliReg.Rows[0]["codlocal"].ToString());
             gB1.Enabled = true;
             dtCliReg.Dispose();
@@ -96,6 +108,65 @@ namespace BaseDados
         private void cCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void bProcurar_Click(object sender, EventArgs e)
+        {
+            bInserir.Enabled = false;
+            bProcurar.Enabled = false;
+            lCliente.Visible = true;
+            cCliente.Visible = true;
+            cCliente.Focus();
+        }
+
+        private void bInserir_Click(object sender, EventArgs e)
+        {
+            XBotao = 1; //Inserir
+            gB1.Enabled = true;
+            bInserir.Enabled = false;
+            bProcurar.Enabled = false;
+            bGravar.Enabled = true;
+            LimpaGB1();
+            tNome.Focus();
+        }
+
+        private void bCancelar_Click(object sender, EventArgs e)
+        {
+            XBotao = 0;
+            bInserir.Enabled = true;
+            bProcurar.Enabled = true;
+            lCliente.Visible = false;
+            cCliente.Visible = false;
+            bGravar.Enabled = false;
+            LimpaGB1();
+            gB1.Enabled = false;
+        }
+
+        private void bGravar_Click(object sender, EventArgs e)
+        {
+            string XValues = "";
+            bInserir.Enabled = true;
+            bProcurar.Enabled = true;
+            lCliente.Visible = false;
+            cCliente.Visible = false;
+            if(XBotao == 1) // Inserir
+            {
+                XValues = "'" + tNome.Text + "','" + tMorada.Text +
+                    (rMasculino.Checked ? "',1,'" : "',0,'") + dNascimento.Text + "'," +
+                    Convert.ToString(cLocalidade.SelectedValue);
+                string XInsert = "INSERT INTO Clientes (Nome, Morada, Sexo, Data_nascimento, codlocal) VALUES("
+                    + XValues + ");";
+                SqlCommand cmd = new SqlCommand(XInsert, Con);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Cliente " + tNome.Text + " inserido.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                gB1.Enabled = false;
+                ReadDB();
+                LimpaGB1();
+            } else //Procurar --> atualizar
+            {
+
+            }
+            
         }
     }
 }

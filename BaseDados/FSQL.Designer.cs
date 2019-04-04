@@ -70,6 +70,7 @@
             this.gB1.Controls.Add(this.label2);
             this.gB1.Controls.Add(this.tCliente);
             this.gB1.Controls.Add(this.label1);
+            this.gB1.Enabled = false;
             this.gB1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gB1.Location = new System.Drawing.Point(12, 12);
             this.gB1.Name = "gB1";
@@ -208,12 +209,14 @@
             // 
             // bGravar
             // 
+            this.bGravar.Enabled = false;
             this.bGravar.Image = global::BaseDados.Properties.Resources.Gravar_2;
             this.bGravar.Location = new System.Drawing.Point(93, 164);
             this.bGravar.Name = "bGravar";
             this.bGravar.Size = new System.Drawing.Size(70, 70);
             this.bGravar.TabIndex = 5;
             this.bGravar.UseVisualStyleBackColor = true;
+            this.bGravar.Click += new System.EventHandler(this.bGravar_Click);
             // 
             // bCancelar
             // 
@@ -223,6 +226,7 @@
             this.bCancelar.Size = new System.Drawing.Size(70, 70);
             this.bCancelar.TabIndex = 4;
             this.bCancelar.UseVisualStyleBackColor = true;
+            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
             // 
             // cCliente
             // 
@@ -231,6 +235,7 @@
             this.cCliente.Name = "cCliente";
             this.cCliente.Size = new System.Drawing.Size(154, 21);
             this.cCliente.TabIndex = 3;
+            this.cCliente.Visible = false;
             this.cCliente.SelectedIndexChanged += new System.EventHandler(this.cCliente_SelectedIndexChanged);
             this.cCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cCliente_KeyPress);
             // 
@@ -242,6 +247,7 @@
             this.lCliente.Size = new System.Drawing.Size(39, 13);
             this.lCliente.TabIndex = 2;
             this.lCliente.Text = "Cliente";
+            this.lCliente.Visible = false;
             // 
             // bProcurar
             // 
@@ -251,6 +257,7 @@
             this.bProcurar.Size = new System.Drawing.Size(70, 70);
             this.bProcurar.TabIndex = 1;
             this.bProcurar.UseVisualStyleBackColor = true;
+            this.bProcurar.Click += new System.EventHandler(this.bProcurar_Click);
             // 
             // bInserir
             // 
@@ -260,6 +267,7 @@
             this.bInserir.Size = new System.Drawing.Size(70, 70);
             this.bInserir.TabIndex = 0;
             this.bInserir.UseVisualStyleBackColor = true;
+            this.bInserir.Click += new System.EventHandler(this.bInserir_Click);
             // 
             // bSair
             // 
@@ -284,7 +292,7 @@
             this.MinimizeBox = false;
             this.Name = "FSQL";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FSQL";
+            this.Text = "Demonstração de acesso ao SQL";
             this.Load += new System.EventHandler(this.FSQL_Load);
             this.gB1.ResumeLayout(false);
             this.gB1.PerformLayout();
