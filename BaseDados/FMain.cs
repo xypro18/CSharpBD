@@ -27,5 +27,11 @@ namespace BaseDados
             Form frm = new FSQL();
             frm.Show();
         }
+
+        private void btn_tree_Click(object sender, EventArgs e)
+        {
+            Form frm = new TreeView();
+            frm.Show();
+        }
     }
 }

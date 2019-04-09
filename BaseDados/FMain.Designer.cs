@@ -46,6 +46,7 @@
             this.btn_tree.Text = "TreeView";
             this.btn_tree.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btn_tree.UseVisualStyleBackColor = true;
+            this.btn_tree.Click += new System.EventHandler(this.btn_tree_Click);
             // 
             // btn_sql
             // 

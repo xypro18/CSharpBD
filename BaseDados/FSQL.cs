@@ -38,6 +38,9 @@ namespace BaseDados
                                      User id = sa; Password = P@ssw0rd; Connect Timeout = 30; 
                                      Encrypt = False; TrustServerCertificate = False; 
                                      ApplicationIntent = ReadWrite; MultiSubnetFailover = False;";
+            //ACCESS:
+            //Con.ConnectionString = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\myFolder\myAccessFile.accdb;
+            //Persist Security Info = False";
             Con.Open();
             ReadDB();
             LimpaGB1();
@@ -164,9 +167,18 @@ namespace BaseDados
                 LimpaGB1();
             } else //Procurar --> atualizar
             {
-
+                XValues = "nome='" + tNome.Text + "', morada='" + tMorada.Text +
+                    (rMasculino.Checked ? "', sexo=1," : "',sexo=0,") + "data_nascimento='" + 
+                    dNascimento.Text + "',codlocal=" + Convert.ToString(cLocalidade.SelectedValue);
+                string XUpdate = "update clientes set " + XValues + " where cliente_id='" + tCliente.Text +"';";
+                SqlCommand cmd = new SqlCommand(XUpdate, Con);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Cliente " + tNome.Text + " foi atualizado.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                gB1.Enabled = false;
+                ReadDB();
+                LimpaGB1();
             }
-            
+            XBotao = 0;            
         }
     }
 }
