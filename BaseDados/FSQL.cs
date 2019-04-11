@@ -68,8 +68,6 @@ namespace BaseDados
             cLocalidade.DataSource = dtLocalidade;
             cLocalidade.ValueMember = "codlocal";
             cLocalidade.DisplayMember = "Localidade";
-
-
         }
 
         private void LimpaGB1()

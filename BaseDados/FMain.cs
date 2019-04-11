@@ -19,7 +19,8 @@ namespace BaseDados
 
         private void btn_access_Click(object sender, EventArgs e)
         {
-
+            Form frm = new FAccess();
+            frm.Show();
         }
 
         private void btn_sql_Click(object sender, EventArgs e)

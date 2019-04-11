@@ -30,8 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FAccess));
             this.gB2 = new System.Windows.Forms.GroupBox();
+            this.bGravar = new System.Windows.Forms.Button();
+            this.bCancelar = new System.Windows.Forms.Button();
             this.cCliente = new System.Windows.Forms.ComboBox();
             this.lCliente = new System.Windows.Forms.Label();
+            this.bProcurar = new System.Windows.Forms.Button();
+            this.bInserir = new System.Windows.Forms.Button();
             this.gB1 = new System.Windows.Forms.GroupBox();
             this.cLocalidade = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -47,10 +51,6 @@
             this.tCliente = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.bSair = new System.Windows.Forms.Button();
-            this.bGravar = new System.Windows.Forms.Button();
-            this.bCancelar = new System.Windows.Forms.Button();
-            this.bProcurar = new System.Windows.Forms.Button();
-            this.bInserir = new System.Windows.Forms.Button();
             this.gB2.SuspendLayout();
             this.gB1.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +69,27 @@
             this.gB2.TabIndex = 8;
             this.gB2.TabStop = false;
             // 
+            // bGravar
+            // 
+            this.bGravar.Enabled = false;
+            this.bGravar.Image = global::BaseDados.Properties.Resources.Gravar_2;
+            this.bGravar.Location = new System.Drawing.Point(93, 164);
+            this.bGravar.Name = "bGravar";
+            this.bGravar.Size = new System.Drawing.Size(70, 70);
+            this.bGravar.TabIndex = 5;
+            this.bGravar.UseVisualStyleBackColor = true;
+            this.bGravar.Click += new System.EventHandler(this.bGravar_Click);
+            // 
+            // bCancelar
+            // 
+            this.bCancelar.Image = global::BaseDados.Properties.Resources.Cancelar_1;
+            this.bCancelar.Location = new System.Drawing.Point(6, 164);
+            this.bCancelar.Name = "bCancelar";
+            this.bCancelar.Size = new System.Drawing.Size(70, 70);
+            this.bCancelar.TabIndex = 4;
+            this.bCancelar.UseVisualStyleBackColor = true;
+            this.bCancelar.Click += new System.EventHandler(this.bCancelar_Click);
+            // 
             // cCliente
             // 
             this.cCliente.FormattingEnabled = true;
@@ -77,6 +98,7 @@
             this.cCliente.Size = new System.Drawing.Size(154, 21);
             this.cCliente.TabIndex = 3;
             this.cCliente.Visible = false;
+            this.cCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cCliente_KeyPress);
             // 
             // lCliente
             // 
@@ -87,6 +109,26 @@
             this.lCliente.TabIndex = 2;
             this.lCliente.Text = "Cliente";
             this.lCliente.Visible = false;
+            // 
+            // bProcurar
+            // 
+            this.bProcurar.Image = global::BaseDados.Properties.Resources.Procurar_1;
+            this.bProcurar.Location = new System.Drawing.Point(93, 19);
+            this.bProcurar.Name = "bProcurar";
+            this.bProcurar.Size = new System.Drawing.Size(70, 70);
+            this.bProcurar.TabIndex = 1;
+            this.bProcurar.UseVisualStyleBackColor = true;
+            this.bProcurar.Click += new System.EventHandler(this.bProcurar_Click);
+            // 
+            // bInserir
+            // 
+            this.bInserir.Image = global::BaseDados.Properties.Resources.Inserir_1png;
+            this.bInserir.Location = new System.Drawing.Point(6, 19);
+            this.bInserir.Name = "bInserir";
+            this.bInserir.Size = new System.Drawing.Size(70, 70);
+            this.bInserir.TabIndex = 0;
+            this.bInserir.UseVisualStyleBackColor = true;
+            this.bInserir.Click += new System.EventHandler(this.bInserir_Click);
             // 
             // gB1
             // 
@@ -234,43 +276,7 @@
             this.bSair.Size = new System.Drawing.Size(70, 70);
             this.bSair.TabIndex = 9;
             this.bSair.UseVisualStyleBackColor = true;
-            // 
-            // bGravar
-            // 
-            this.bGravar.Enabled = false;
-            this.bGravar.Image = global::BaseDados.Properties.Resources.Gravar_2;
-            this.bGravar.Location = new System.Drawing.Point(93, 164);
-            this.bGravar.Name = "bGravar";
-            this.bGravar.Size = new System.Drawing.Size(70, 70);
-            this.bGravar.TabIndex = 5;
-            this.bGravar.UseVisualStyleBackColor = true;
-            // 
-            // bCancelar
-            // 
-            this.bCancelar.Image = global::BaseDados.Properties.Resources.Cancelar_1;
-            this.bCancelar.Location = new System.Drawing.Point(6, 164);
-            this.bCancelar.Name = "bCancelar";
-            this.bCancelar.Size = new System.Drawing.Size(70, 70);
-            this.bCancelar.TabIndex = 4;
-            this.bCancelar.UseVisualStyleBackColor = true;
-            // 
-            // bProcurar
-            // 
-            this.bProcurar.Image = global::BaseDados.Properties.Resources.Procurar_1;
-            this.bProcurar.Location = new System.Drawing.Point(93, 19);
-            this.bProcurar.Name = "bProcurar";
-            this.bProcurar.Size = new System.Drawing.Size(70, 70);
-            this.bProcurar.TabIndex = 1;
-            this.bProcurar.UseVisualStyleBackColor = true;
-            // 
-            // bInserir
-            // 
-            this.bInserir.Image = global::BaseDados.Properties.Resources.Inserir_1png;
-            this.bInserir.Location = new System.Drawing.Point(6, 19);
-            this.bInserir.Name = "bInserir";
-            this.bInserir.Size = new System.Drawing.Size(70, 70);
-            this.bInserir.TabIndex = 0;
-            this.bInserir.UseVisualStyleBackColor = true;
+            this.bSair.Click += new System.EventHandler(this.bSair_Click);
             // 
             // FAccess
             // 
